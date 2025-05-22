@@ -5,7 +5,10 @@ const express = require('express')
 const app = express()
 
 // Defining the routes here:
-
+app.get('/greetings/:name', (req, res) => {
+    const name = req.params.name;
+    res.send(`Hello, ${name}`);
+});
 
 
 // Listening for requests on port 3000
