@@ -12,3 +12,11 @@ const app = express()
 app.listen(3000, () => {
     console.log('Listening on port 3000')
 })
+
+
+
+
+// EXAMPLE OF DEFINING ROUTES
+// app.get('/', (req, res) => { 
+//     res.send('<h1>Hello World!</h1>');
+//   });
