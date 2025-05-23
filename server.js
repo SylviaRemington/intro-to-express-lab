@@ -13,12 +13,12 @@ app.get('/greetings/:name', (req, res) => {
 
 //Exercise #2
 app.get('/roll/:number', (req, res) => {
-    // const number = req.params.number;
-    // console.log(number);
-    if (number === '') {
-        console.log('You must specify a number.');
+    const number = req.params.number;
+    if (number isNaN()) {
+        console.log('You must specify a number. Your input is showing invalid.');
     }else {
-        const number = req.params.number;
+        const max = 12; //for a set of two dice
+        const min = 2; //for a set of two dice
         let rollNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     }
 });
