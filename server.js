@@ -12,7 +12,15 @@ app.get('/greetings/:name', (req, res) => {
 });
 
 //Exercise #2
-
+app.get('/roll/:number', (req, res) => {
+    const number = req.params.number;
+    console.log(number);
+    if (number === '') {
+        console.log('You must specify a number.');
+    }else {
+        const number = req.params.number;
+    }
+});
 
 // Listening for requests on port 3000
 app.listen(3000, () => {
@@ -22,7 +30,21 @@ app.listen(3000, () => {
 
 
 
+
+
+//CODE GRAVEYARD STUFF -- experiments with code
+
 // EXAMPLE OF DEFINING ROUTES
 // app.get('/', (req, res) => { 
 //     res.send('<h1>Hello World!</h1>');
 //   });
+
+//Exercise #2 -- first try... I know it's incorrect... just figuring it out showing my thought process for myself
+// app.get('/roll/:number', (req, res) => {
+//     const number = req.params.number;
+//     if (number !== number) {
+//         console.log('You must specify a number.');
+//     }else {
+//         const number = req.params.number;
+//     }
+// });
