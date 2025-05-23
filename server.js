@@ -14,7 +14,7 @@ app.get('/greetings/:name', (req, res) => {
 //Exercise #2
 app.get('/roll/:number', (req, res) => {
     const number = req.params.number;
-    if (number isNaN()) {
+    if (number isNaN('')) {
         console.log('You must specify a number. Your input is showing invalid.');
     }else {
         const max = 12; //for a set of two dice
