@@ -12,6 +12,9 @@ app.get('/greetings/:name', (req, res) => {
 });
 
 //Exercise #2
+//let num=parsint//use pars... look up//
+//if number equals string, it's not a number & show error message; 
+// if number then show number
 app.get('/roll/:number', (req, res) => {
     const number = req.params.number;
     if (number isNaN('')) {
