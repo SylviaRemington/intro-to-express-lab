@@ -8,7 +8,7 @@ const app = express()
 //Exercise #1
 app.get('/greetings/:name', (req, res) => {
     const name = req.params.name;
-    res.send(`Hello, ${name}`);
+    res.send(`Hello, ${name}! What a delight to see you once more.`);
 });
 
 //Exercise #2
