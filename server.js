@@ -13,12 +13,13 @@ app.get('/greetings/:name', (req, res) => {
 
 //Exercise #2
 app.get('/roll/:number', (req, res) => {
-    const number = req.params.number;
-    console.log(number);
+    // const number = req.params.number;
+    // console.log(number);
     if (number === '') {
         console.log('You must specify a number.');
     }else {
         const number = req.params.number;
+        let rollNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     }
 });
 
@@ -48,3 +49,14 @@ app.listen(3000, () => {
 //         const number = req.params.number;
 //     }
 // });
+
+app.get('/roll/:number', (req, res) => {
+    // const number = req.params.number;
+    // console.log(number);
+    if (number === NaN) {
+        console.log('You must specify a number. Your input is showing invalid.');
+    }else {
+        const number = req.params.number;
+        let rollNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+});
