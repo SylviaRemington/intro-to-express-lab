@@ -12,15 +12,10 @@ app.get('/greetings/:name', (req, res) => {
 });
 
 //Exercise #2
-app.get('/roll/:number', (req, res) => {
-    const number = req.params.number;
-    if (number isNaN('')) {
-        console.log('You must specify a number. Your input is showing invalid.');
-    }else {
-        const max = 12; //for a set of two dice
-        const min = 2; //for a set of two dice
-        let rollNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+app.get('/roll/:number', (req, res) => { //setting up the route and getting/capturing the parameter
+    // route parameter of :number matches any value in the url segment
+    const number = req.params.number; //holds value of parameter and captures parameter as a string
+  
 });
 
 // Listening for requests on port 3000
