@@ -15,6 +15,7 @@ app.get('/greetings/:name', (req, res) => {
 app.get('/roll/:number', (req, res) => { //setting up the route and getting/capturing the parameter
     // route parameter of :number matches any value in the url segment
     const number = req.params.number; //holds value of parameter and captures parameter as a string
+    let validNumber = Number.parseInt(userInput, 10);
   
 });
 
