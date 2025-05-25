@@ -12,14 +12,19 @@ app.get('/greetings/:name', (req, res) => {
 });
 
 //Exercise #2
-app.get('/roll/:number', (req, res) => { //setting up the route and getting/capturing the parameter
-    // route parameter of :number matches any value put in the url segment 
-    //The number in the URL grabs the parameter’s value from that part of the web address.
+app.get('/roll/:number', (req, res) => { 
+    // LINE ABOVE MEANING: What it does: Sets up a web address like example.com/roll/6 where :number can be any value (like 6 or 42).
+    // Simple English: Makes the app listen for a web address starting with /roll/ followed by any number or word.
+
     const number = req.params.number; //it stores the URL's parameter info and grabs it as text
+    // LINE ABOVE MEANING: What it does: Grabs the value after /roll/ (like 6 from example.com/roll/6) and stores it as text in a variable called number.
+    
     let validNumber = Number.parseInt(number, 10); //I'm converting a string to a number here (e.g. "6" to 6)
+    // LINE ABOVE MEANING: What it does: Turns the text in number (like "6") into an actual number (like 6) you can use for math. The 10 means it’s in base-10 (normal numbers).
+    // Simple English: Changes the text (like "6") into a real number (like 6).
     
     if (isNaN(validNumber)) { // Check if input isn’t a number
-        res.send("You must specify a number."); // Send error for /roll/potato
+        res.send("You must specify a number."); // Send error for (example) /roll/potato
     } else {
         let random = Math.floor(Math.random() * (validNumber + 1)); // Random number 0 to validNumber
         res.send(`You rolled a ${random}.`); // Send result, e.g., "You rolled a 14."
