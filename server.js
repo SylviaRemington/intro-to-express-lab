@@ -5,7 +5,7 @@ const express = require('express')
 const app = express()
 
 // Defining the routes here:
-// Exercise #1
+// Exercise #1 - works!
 app.get('/greetings/:name', (req, res) => {
     const name = req.params.name;
     res.send(`Hello, ${name}! What a delight to see you once more.`);
@@ -13,8 +13,9 @@ app.get('/greetings/:name', (req, res) => {
 
 //Exercise #2
 app.get('/roll/:number', (req, res) => { //setting up the route and getting/capturing the parameter
-    // route parameter of :number matches any value in the url segment
-    const number = req.params.number; //holds value of parameter and captures parameter as a string
+    // route parameter of :number matches any value put in the url segment 
+    //The number in the URL grabs the parameter’s value from that part of the web address.
+    const number = req.params.number; //it stores the URL's parameter info and grabs it as text
     let validNumber = Number.parseInt(number, 10); //I'm converting a string to a number here (e.g. "6" to 6)
     
     if (isNaN(validNumber)) { // Check if input isn’t a number
