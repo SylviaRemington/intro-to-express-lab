@@ -1,11 +1,11 @@
 // Importing Express
-const express = require('express');
+const express = require('express')
 
 // Creating an Express Application/App - This configures to create API
-const app = express();
+const app = express()
 
 // Defining the routes here:
-//Exercise #1
+// Exercise #1
 app.get('/greetings/:name', (req, res) => {
     const name = req.params.name;
     res.send(`Hello, ${name}! What a delight to see you once more.`);
