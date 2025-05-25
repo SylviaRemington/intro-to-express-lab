@@ -12,6 +12,15 @@ app.get('/greetings/:name', (req, res) => {
 });
 
 //Exercise #2
+//INFO FOR ME: 
+// The app is a game where you “roll a dice” on a website. You pick how many sides the dice has by putting a number in the web address. 
+// Like, if you go to website.com/roll/6, you’re saying, “I want a dice with 6 sides.” 
+// The app then picks a random number from 0 to 6, like 4, and tells you, “You got a 4.”
+
+// Why the number in the web address? It’s you choosing the dice size. 6 means a 6-sided dice. If you put 10 (website.com/roll/10), you pick a 10-sided dice.
+// Why a random number? To make it feel like rolling a real dice. If it just repeated your number, it wouldn’t be a game.
+// Writing 6 in the URL (like website.com/roll/6) is me telling the app, “I want a dice with 6 sides.” That’s all it does—it sets the number of sides for the dice the app will “roll” to give you a random number from 0 to 6.
+
 app.get('/roll/:number', (req, res) => { 
     // LINE ABOVE MEANING: What it does: Sets up a web address like example.com/roll/6 where :number can be any value (like 6 or 42).
     // Simple English: Makes the app listen for a web address starting with /roll/ followed by any number or word.
@@ -24,8 +33,10 @@ app.get('/roll/:number', (req, res) => {
     // Simple English: Changes the text (like "6") into a real number (like 6).
     
     if (isNaN(validNumber)) { // Check if input isn’t a number
-        res.send("You must specify a number."); // Send error for (example) /roll/potato
+        // Line above meaning: What it does: Checks if validNumber isn’t a number (e.g., if the URL was /roll/potato, parseInt fails and gives NaN, meaning “not a number”).
+        res.send("You must specify a number."); // Send error for message (example) /roll/potato
     } else {
+        // What it does: If validNumber is a number, it runs the code below.
         let random = Math.floor(Math.random() * (validNumber + 1)); // Random number 0 to validNumber
         res.send(`You rolled a ${random}.`); // Send result, e.g., "You rolled a 14."
     }
