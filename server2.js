@@ -46,8 +46,8 @@ const collectibles = [
     }
   });
 
-  
-  //Exercise #4
+
+  //Exercise #4 - older version
 const shoes = [
     { name: "Birkenstocks", price: 50, type: "sandal" }, // Sandal, $50
     { name: "Air Jordans", price: 500, type: "sneaker" }, // Sneaker, $500

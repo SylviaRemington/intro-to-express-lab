@@ -72,7 +72,7 @@ const collectibles = [
   });
 
 
-  // Exercise #4
+  // Exercise #4 - work now
   // This is our store’s list of shoes
 const shoes = [
     { name: "Birkenstocks", price: 50, type: "sandal" }, // Sandal, $50
@@ -108,7 +108,17 @@ const shoes = [
     }
   
     // Show the shoes that are left after checking all instructions
-    res.send(filteredShoes);
+        // If they said type (like type=sandal), keep only shoes that are that type
+    if (type) {
+      filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
+    }
+  
+    // Show the shoes that are left after checking all instructions
+    let response = 'Shoes:\n';
+    filteredShoes.forEach(shoe => {
+      response += `${shoe.name} - $${shoe.price} (${shoe.type})\n`;
+    });
+    res.send(response);
   });
 
 
@@ -175,3 +185,11 @@ app.listen(3000, () => {
 // You’re logging the error instead of sending it as a response to the client.
 // You’re not sending the random roll result back to the client.
 // Let’s rethink the solution from scratch, focusing on how to reason through it and create pseudocode to guide your implementation.
+
+    // If they said type (like type=sandal), keep only shoes that are that type
+    // if (type) {
+    //     filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
+    //   }
+    
+      // Show the shoes that are left after checking all instructions
+    //   res.send(filteredShoes);
