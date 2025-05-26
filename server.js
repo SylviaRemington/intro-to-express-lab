@@ -11,7 +11,7 @@ app.get('/greetings/:name', (req, res) => {
     res.send(`Hello, ${name}! What a delight to see you once more.`);
 });
 
-//Exercise #2
+// Exercise #2
 //INFO FOR ME: 
 // The app is a game where you “roll a dice” on a website. You pick how many sides the dice has by putting a number in the web address. 
 // Like, if you go to website.com/roll/6, you’re saying, “I want a dice with 6 sides.” 
@@ -42,7 +42,7 @@ app.get('/roll/:number', (req, res) => {
     }
 });
 
-//Exercise #3
+// Exercise #3
 // This is our shop’s list of items
 const collectibles = [
     { name: 'shiny ball', price: 5.95 }, // Item 0
@@ -67,7 +67,45 @@ const collectibles = [
     }
   });
 
-  //
+  // Exercise #4
+  // This is our store’s list of shoes
+const shoes = [
+    { name: "Birkenstocks", price: 50, type: "sandal" }, // Sandal, $50
+    { name: "Air Jordans", price: 500, type: "sneaker" }, // Sneaker, $500
+    { name: "Air Mahomeses", price: 501, type: "sneaker" }, // Sneaker, $501
+    { name: "Utility Boots", price: 20, type: "boot" }, // Boot, $20
+    { name: "Velcro Sandals", price: 15, type: "sandal" }, // Sandal, $15
+    { name: "Jet Boots", price: 1000, type: "boot" }, // Boot, $1000
+    { name: "Fifty-Inch Heels", price: 175, type: "heel" } // Heel, $175
+  ];
+  
+  // When someone visits yourshop.com/shoes or yourshop.com/shoes?type=sandal
+  app.get('/shoes', (req, res) => {
+    // Start with all seven shoes
+    let filteredShoes = [...shoes];
+    
+    // Look for instructions in the web address (like min-price, max-price, or type)
+    const { 'min-price': minPrice, 'max-price': maxPrice, type } = req.query;
+  
+    // If they said min-price (like min-price=20), keep only shoes that cost $20 or more
+    if (minPrice) {
+      filteredShoes = filteredShoes.filter(shoe => shoe.price >= parseFloat(minPrice));
+    }
+    
+    // If they said max-price (like max-price=100), keep only shoes that cost $100 or less
+    if (maxPrice) {
+      filteredShoes = filteredShoes.filter(shoe => shoe.price <= parseFloat(maxPrice));
+    }
+    
+    // If they said type (like type=sandal), keep only shoes that are that type
+    if (type) {
+      filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
+    }
+  
+    // Show the shoes that are left after checking all instructions
+    res.send(filteredShoes);
+  });
+  
 
 // Listening for requests on port 3000
 app.listen(3000, () => {

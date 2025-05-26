@@ -26,7 +26,6 @@ app.get('/roll/:number', (req, res) => {
 });
 
 //Exercise #3
-// This is our shop’s list of items
 const collectibles = [
     { name: 'shiny ball', price: 5.95 }, // Item 0
     { name: 'autographed picture of a dog', price: 10 }, // Item 1
@@ -44,6 +43,38 @@ const collectibles = [
     }
   });
 
+  //Exercise #4
+const shoes = [
+    { name: "Birkenstocks", price: 50, type: "sandal" }, // Sandal, $50
+    { name: "Air Jordans", price: 500, type: "sneaker" }, // Sneaker, $500
+    { name: "Air Mahomeses", price: 501, type: "sneaker" }, // Sneaker, $501
+    { name: "Utility Boots", price: 20, type: "boot" }, // Boot, $20
+    { name: "Velcro Sandals", price: 15, type: "sandal" }, // Sandal, $15
+    { name: "Jet Boots", price: 1000, type: "boot" }, // Boot, $1000
+    { name: "Fifty-Inch Heels", price: 175, type: "heel" } // Heel, $175
+  ];
+  
+  app.get('/shoes', (req, res) => {
+    let filteredShoes = [...shoes];
+    
+    const { 'min-price': minPrice, 'max-price': maxPrice, type } = req.query;
+  
+    if (minPrice) {
+      filteredShoes = filteredShoes.filter(shoe => shoe.price >= parseFloat(minPrice));
+    }
+    
+    if (maxPrice) {
+      filteredShoes = filteredShoes.filter(shoe => shoe.price <= parseFloat(maxPrice));
+    }
+    
+    if (type) {
+      filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
+    }
+  
+    res.send(filteredShoes);
+  });
+
+  
 // Listening for requests on port 3000
 app.listen(3000, () => {
     console.log('Listening on port 3000');
