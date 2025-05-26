@@ -5,11 +5,13 @@ const express = require('express');
 
 const app = express();
 
+
 //Exercise #1
 app.get('/greetings/:name', (req, res) => {
     const name = req.params.name;
     res.send(`Hello, ${name}! What a delight to see you once more.`);
 });
+
 
 //Exercise #2
 app.get('/roll/:number', (req, res) => { 
@@ -24,6 +26,7 @@ app.get('/roll/:number', (req, res) => {
         res.send(`You rolled a ${random}.`);
     }
 });
+
 
 //Exercise #3
 const collectibles = [
@@ -43,6 +46,7 @@ const collectibles = [
     }
   });
 
+  
   //Exercise #4
 const shoes = [
     { name: "Birkenstocks", price: 50, type: "sandal" }, // Sandal, $50
@@ -74,7 +78,7 @@ const shoes = [
     res.send(filteredShoes);
   });
 
-  
+
 // Listening for requests on port 3000
 app.listen(3000, () => {
     console.log('Listening on port 3000');

@@ -4,14 +4,17 @@ const express = require('express')
 // Creating an Express Application/App - This configures to create API
 const app = express()
 
+
 // Defining the routes here:
+
 // Exercise #1 - works!
 app.get('/greetings/:name', (req, res) => {
     const name = req.params.name;
     res.send(`Hello, ${name}! What a delight to see you once more.`);
 });
 
-// Exercise #2
+
+// Exercise #2 - works!
 //INFO FOR ME: 
 // The app is a game where you “roll a dice” on a website. You pick how many sides the dice has by putting a number in the web address. 
 // Like, if you go to website.com/roll/6, you’re saying, “I want a dice with 6 sides.” 
@@ -42,6 +45,7 @@ app.get('/roll/:number', (req, res) => {
     }
 });
 
+
 // Exercise #3
 // This is our shop’s list of items
 const collectibles = [
@@ -66,6 +70,7 @@ const collectibles = [
       res.send(`So, you want the ${item.name}? For ${item.price}, it can be yours!`);
     }
   });
+
 
   // Exercise #4
   // This is our store’s list of shoes
@@ -105,8 +110,9 @@ const shoes = [
     // Show the shoes that are left after checking all instructions
     res.send(filteredShoes);
   });
-  
 
+
+  
 // Listening for requests on port 3000
 app.listen(3000, () => {
     console.log('Listening on port 3000');
