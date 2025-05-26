@@ -90,19 +90,19 @@ const collectibles = [
     const maxPrice = parseFloat(req.query['max-price']); //grabs maxPrice number that's a string and turns it into a number
     const type = req.query.type; //grabs the “type” (e.g. “sandal”) from the web address.
 
-    if (minPrice) {
-        filteredShoes = filteredShoes.filter(shoe => shoe.price >= minPrice);
+    if (minPrice) { //check for real number of minPrice
+        filteredShoes = filteredShoes.filter(shoe => shoe.price >= minPrice); //keeps only shoes in the list that cost the same as or more than minPrice
     }
 
-    if (maxPrice) {
-        filteredShoes = filteredShoes.filter(shoe => shoe.price <= maxPrice);
+    if (maxPrice) { //check for real number of maxPrice
+        filteredShoes = filteredShoes.filter(shoe => shoe.price <= maxPrice); //keeps only shoes in the list that cost the same as or less than maxPrice
     }
 
-    if (type) {
-        filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
+    if (type) { //check if there’s a type like sandal or sneaker
+        filteredShoes = filteredShoes.filter(shoe => shoe.type === type); //keeps only shoes in the list that match the type
     }
 
-    res.send(filteredShoes); //sends response to the client
+    res.send(filteredShoes); //sends response to the client with final list of shoes back to the person who visited the website
   });
 
 
