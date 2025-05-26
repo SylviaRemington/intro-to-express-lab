@@ -47,7 +47,7 @@ const collectibles = [
   });
 
 
-  //Exercise #4 - older version
+  //Exercise #4 
 const shoes = [
     { name: "Birkenstocks", price: 50, type: "sandal" }, // Sandal, $50
     { name: "Air Jordans", price: 500, type: "sneaker" }, // Sneaker, $500
@@ -61,22 +61,22 @@ const shoes = [
   app.get('/shoes', (req, res) => {
     let filteredShoes = [...shoes];
 
-    const minPrice = req.query['min-price'];
-    const maxPrice = req.query['max-price'];
+    const minPrice = parseFloat(req.query['min-price']);
+    const maxPrice = parseFloat(req.query['max-price']);
     const type = req.query.type;
-  
+
     if (minPrice) {
-      filteredShoes = filteredShoes.filter(shoe => shoe.price >= parseFloat(minPrice));
+        filteredShoes = filteredShoes.filter(shoe => shoe.price >= minPrice);
     }
-    
+
     if (maxPrice) {
-      filteredShoes = filteredShoes.filter(shoe => shoe.price <= parseFloat(maxPrice));
+        filteredShoes = filteredShoes.filter(shoe => shoe.price <= maxPrice);
     }
-    
+
     if (type) {
-      filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
+        filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
     }
-  
+
     res.send(filteredShoes);
   });
 

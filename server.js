@@ -72,9 +72,8 @@ const collectibles = [
   });
 
 
-  // Exercise #4 - work now
-  // This is our store’s list of shoes
-const shoes = [
+  //Exercise #4 - corrected code now
+  const shoes = [
     { name: "Birkenstocks", price: 50, type: "sandal" }, // Sandal, $50
     { name: "Air Jordans", price: 500, type: "sneaker" }, // Sneaker, $500
     { name: "Air Mahomeses", price: 501, type: "sneaker" }, // Sneaker, $501
@@ -84,42 +83,33 @@ const shoes = [
     { name: "Fifty-Inch Heels", price: 175, type: "heel" } // Heel, $175
   ];
   
-  // When someone visits yourshop.com/shoes or yourshop.com/shoes?type=sandal
-  app.get('/shoes', (req, res) => {
-    // Start with all seven shoes
-    let filteredShoes = [...shoes];
-    
-    // Look for instructions in the web address (like min-price, max-price, or type)
-    const { 'min-price': minPrice, 'max-price': maxPrice, type } = req.query;
-  
-    // If they said min-price (like min-price=20), keep only shoes that cost $20 or more
+  app.get('/shoes', (req, res) => { //listening for people to visit shoes website and run the code inside
+    let filteredShoes = [...shoes]; //new array created by copying the shoes list so don't mess up original list
+
+    const minPrice = parseFloat(req.query['min-price']); //grabs minPrice number that's a string and turns it into a number
+    const maxPrice = parseFloat(req.query['max-price']); //grabs maxPrice number that's a string and turns it into a number
+    const type = req.query.type; //grabs the “type” (e.g. “sandal”) from the web address.
+
     if (minPrice) {
-      filteredShoes = filteredShoes.filter(shoe => shoe.price >= parseFloat(minPrice));
+        filteredShoes = filteredShoes.filter(shoe => shoe.price >= minPrice);
     }
-    
-    // If they said max-price (like max-price=100), keep only shoes that cost $100 or less
+
     if (maxPrice) {
-      filteredShoes = filteredShoes.filter(shoe => shoe.price <= parseFloat(maxPrice));
+        filteredShoes = filteredShoes.filter(shoe => shoe.price <= maxPrice);
     }
-    
-    // If they said type (like type=sandal), keep only shoes that are that type
+
     if (type) {
-      filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
+        filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
     }
-  
-    // Show the shoes that are left after checking all instructions
-        // If they said type (like type=sandal), keep only shoes that are that type
-    if (type) {
-      filteredShoes = filteredShoes.filter(shoe => shoe.type === type);
-    }
-  
-    // Show the shoes that are left after checking all instructions
-    let response = 'Shoes:\n';
-    filteredShoes.forEach(shoe => {
-      response += `${shoe.name} - $${shoe.price} (${shoe.type})\n`;
-    });
-    res.send(response);
+
+    res.send(filteredShoes); //sends response to the client
   });
+
+
+// Listening for requests on port 3000
+app.listen(3000, () => {
+    console.log('Listening on port 3000');
+});
 
 
 
