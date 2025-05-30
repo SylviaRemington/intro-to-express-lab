@@ -112,11 +112,11 @@ app.listen(3000, () => {
 });
 
 
-
+//Duplicate Error --Commenting out
 // Listening for requests on port 3000
-app.listen(3000, () => {
-    console.log('Listening on port 3000');
-});
+// app.listen(3000, () => {
+//     console.log('Listening on port 3000');
+// });
 
 
 
