@@ -1,3 +1,5 @@
+// INTRO TO EXPRESS LAB - FIRST PRACTICE (Re-did it again with git repo entitled "intro-to-express-lab-second-practice" to make sure I fully understood it.)
+
 // Importing Express
 const express = require('express')
 
